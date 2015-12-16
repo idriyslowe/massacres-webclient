@@ -1,0 +1,33 @@
+<%= form_tag "/incidents/#{@incident['id']}", method: :patch do %>
+  <div>
+    <%= label_tag :murderer_first_name %>
+    <%= text_field_tag :murderer_first_name, @incident["murderer_first_name"] %>
+  </div>
+  <div>
+    <%= label_tag :murderer_last_name %>
+    <%= text_field_tag :murderer_last_name, @incident["murderer_last_name"] %>
+  </div>
+    <div>
+    <%= label_tag :birthdate %>
+    <%= text_field_tag :birthdate, @incident["birthdate"] %>
+  </div>
+    <div>
+    <%= label_tag :location %>
+    <%= text_field_tag :location, @incident["location"]%>
+  </div>
+    <div>
+    <%= label_tag :weapon %>
+    <%= text_field_tag :weapon, @incident["weapon"] %>
+  </div>
+    <div>
+    <%= label_tag :number_of_victims %>
+    <%= text_field_tag :number_of_victims, @incident["number_of_victims"]%>
+  </div>
+    <div>
+    <%= label_tag :sentence %>
+    <%= text_field_tag :sentence, @incident["sentence"]%>
+  </div>
+  <div>
+    <%= submit_tag "Submit" %>
+  </div>
+<% end %>
