@@ -1,3 +1,8 @@
 <% @incidents.each do |incident| %>
-  <h1><%= incident["murderer_first_name"] %> <%= incident["murderer_last_name"] %></h1>
+  <h1><%= incident.murderer_first_name %> <%= incident.murderer_last_name %></h1>
+  <p>Birthdate:<%= incident.birthdate %></p>
+  <p>City: <%= incident.location %></p>
+  <p>Number of victims: <%= incident.number_of_victims %></p>
+  <p>Weapon: <%= incident.weapon %></p>
+  <p>ID: <%= incident.id %></p>
 <% end %>

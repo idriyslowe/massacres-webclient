@@ -1,16 +1,14 @@
 class IncidentsController < ApplicationController
   def index
-    @incidents = Unirest.get("http://localhost:3000/incidents.json").body
+    @incidents = Incident.all
   end
   def show
-    @incident = Unirest.get("http://localhost:3000/incidents/#{params[:id]}.json").body
+    @incident = Incident.find_by(id: params[:id])
   end
   def new
   end
   def create
-    @incident = Unirest.post("http://localhost:3000/incidents.json", 
-      headers: { "Accept" => "application/json" },
-      parameters: { 
+    @incident = Incident.create(
         murderer_first_name: params[:murderer_first_name],
         murderer_last_name: params[:murderer_last_name],
         birthdate: params[:birthdate],
@@ -18,7 +16,7 @@ class IncidentsController < ApplicationController
         weapon: params[:weapon],
         number_of_victims: params[:number_of_victims],
         sentence: params[:sentence]
-        })
+      )
     redirect_to "/incidents"
   end
   def edit
@@ -37,5 +35,12 @@ class IncidentsController < ApplicationController
         }
       )
     redirect_to "/incidents"
+  end
+  def destroy
+    @incident = Unirest.delete("http://localhost:3000/incidents/#{params[:id]}.json",
+      parameters: {
+        id: params[:id]
+        })
+    redirect_to '/incidents'
   end
 end
